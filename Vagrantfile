@@ -3,8 +3,8 @@
 
 Vagrant::Config.run do |config|
 	# Base box to build off, and download URL for when it doesn't exist on the user's system already
-	config.vm.box = "precise32"
-	config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+	config.vm.box = "django-ubuntu-1204-64"
+	config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
 	# As an alternative to precise32, VMs can be built from the 'django-base' box as defined at
 	# https://github.com/torchbox/vagrant-django-base , which has more of the necessary server config
