@@ -26,7 +26,7 @@ export LC_ALL=en_GB.UTF-8
 # Install essential packages from Apt
 apt-get update -y
 # essential packages
-apt-get install -y vim tree screen htop
+apt-get install -y vim tree screen htop memcached
 # Python dev packages
 apt-get install -y build-essential python python-dev python-setuptools python-pip python-memcache
 # Dependencies for image processing with PIL
