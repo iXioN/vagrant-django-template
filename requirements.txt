@@ -9,3 +9,9 @@ sqlparse==0.1.8
 #werkzeug==0.9.3
 django-devserver==0.5.0
 fabric==1.6.1
+
+#rest deps
+djangorestframework==2.3.7
+#django-filter==0.7
+
+django-celery==3.0.21

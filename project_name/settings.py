@@ -13,6 +13,8 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+    #('Antonin Lacombe', 'antonin.lacombe@1000heads.com'),
+
 )
 
 MANAGERS = ADMINS
@@ -132,6 +134,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'devserver',
+    'django_extensions',
+    'rest_framework',
+    'djcelery',
+
     #your app here
 )
 
@@ -139,12 +145,20 @@ EMAIL_SUBJECT_PREFIX = '[{{ project_name }}/Production] '
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
-    }
-}
+#Cache settings
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '127.0.0.1:11211',
+#     }
+# }
+
+#Celery settings
+# import djcelery
+# djcelery.setup_loader()
+
+# BROKER_URL = 'amqp://nokia501:nokia501@localhost:5672/nokia501'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

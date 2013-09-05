@@ -55,7 +55,11 @@ su - vagrant -c "mkdir -p /home/vagrant/.pip_download_cache"
 
 
 # postgresql setup for project
-createdb -Upostgres $DB_NAME
+if psql -Upostgres   $DB_NAME -c '\q' 2>&1; then
+   echo "database $DB_NAME exists"
+else
+	createdb -Upostgres $DB_NAME
+fi
 
 # virtualenv setup for project
 su - vagrant -c "/usr/local/bin/virtualenv $VIRTUALENV_DIR && \
@@ -69,4 +73,7 @@ chmod a+x $PROJECT_DIR/manage.py
 
 # Django project setup
 su - vagrant -c "source $VIRTUALENV_DIR/bin/activate && cd $PROJECT_DIR && ./manage.py syncdb --noinput && ./manage.py migrate"
-su - vagrant -c "cd $PROJECT_DIR/$PROJECT_NAME && ln -s dev_settings.py local_settings.py"
+
+if [[ ! -f $PROJECT_DIR/$PROJECT_NAME/local_settings.py ]]; then
+    su - vagrant -c "cd $PROJECT_DIR/$PROJECT_NAME && ln -s dev_settings.py local_settings.py"
+fi
